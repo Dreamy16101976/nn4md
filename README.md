@@ -8,8 +8,8 @@ WWW: https://acdc.foxylab.com<br/>
 A neural network that processes measurement results and discriminates targets.<br/>
 <br/>
 **Build**:<br/>
-`go get -u 
-go build nn4md.go`
+`go get github.com/fatih/color`<br/>
+`go build nn4md.go`
 <br/>
 **Use**:<br/>
 `nn4md -s seed -h hiddens -r rate`<br/>
