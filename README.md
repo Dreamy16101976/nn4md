@@ -16,8 +16,8 @@ A neural network that processes measurement results and discriminates targets.<b
 *seed* - seed for PRNG<br/>
 *hiddens* - number of hidden layer neurons<br/>
 *rate* - learning rate<br/>
-**Input**:
-Train data file : *train.dat*
-Validation data file : *test.dat*
-**Output**:
-Neural network structure file: *nn4md.json*
+**Input**:<br/>
+Train data file : *train.dat*<br/>
+Validation data file : *test.dat*<br/>
+**Output**:<br/>
+Neural network structure file: *nn4md.json*<br/>
