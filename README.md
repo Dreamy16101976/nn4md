@@ -3,8 +3,7 @@ nn4md
 
 Neural net for pulse induction metal detector / Нейронная сеть для импульсного металлодетектора<br/>
 <br/>
-(C) 2019 Alexey "FoxyLab" Voronin<br/><support@foxylab.com><br/>
-[https://acdc.foxylab.com]<br/>
+(C) 2019 Alexey "FoxyLab" Voronin support@foxylab.com> https://acdc.foxylab.com<br/>
 <br/>
 A neural network that processes measurement results and discriminates targets.<br/>
 ***
