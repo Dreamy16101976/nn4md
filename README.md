@@ -20,7 +20,7 @@ A neural network that processes measurement results and discriminates targets.<b
 Train data file : *train.dat*<br/>
 Validation data file : *test.dat*<br/>
 Format:<br/>
-**i**0x09**i**...**i**0x09**o**...**o**0x0A**
+**i**0x09**i**...**i**0x09**o**...**o**0x0A<br/>
 **Output**:<br/>
 Neural network structure plaintext file: *nn4md.txt*<br/>
 Neural network structure JSON file: *nn4md.json*<br/>
