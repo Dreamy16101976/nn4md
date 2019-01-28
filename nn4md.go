@@ -33,19 +33,20 @@ import (
 )
 
 const (
-	inputs         = 8            //number of input nodes
-	defaultHiddens = 3            //number of hidden nodes
-	outputs        = 2            //number of output nodes
-	weightStart    = 0.1          //start weights value
-	defaultα       = 0.1          //default learning rate
-	errThreshold   = 0.01         //MSE threshold
-	learningSize   = 110          //train data size
-	testSize       = 40           //validation data size
-	scaleIn        = 1024         //input data scaling factor
-	scaleOut       = 1.0          //output data scaling factor
-	trainFileName  = "train.dat"  //train data filename
-	validFileName  = "test.dat"   //validation data filename
-	jsonFileName   = "nn4md.json" //JSON filename
+	inputs          = 8            //number of input nodes
+	defaultHiddens  = 3            //number of hidden nodes
+	outputs         = 2            //number of output nodes
+	weightStart     = 0.1          //start weights value
+	defaultα        = 0.1          //default learning rate
+	errThreshold    = 0.01         //MSE threshold
+	learningSize    = 110          //train data size
+	testSize        = 40           //validation data size
+	scaleIn         = 1024         //input data scaling factor
+	scaleOut        = 1.0          //output data scaling factor
+	trainFileName   = "train.dat"  //train data filename
+	validFileName   = "test.dat"   //validation data filename
+	jsonFileName    = "nn4md.json" //JSON filename
+	weightsFileName = "nn4md.txt"  //weights filename
 )
 
 //error check
@@ -327,7 +328,7 @@ func main() {
 	iteration := 0
 	lSSE := 0.0
 	lMSE := 0.0
-	tSSE := 0.0 
+	tSSE := 0.0
 	tMSE := 0.0
 	ok := 0
 	rand.Seed(8888)
@@ -413,6 +414,30 @@ func main() {
 	fmt.Print("\tAcc.: ", ok)
 	fmt.Printf("\t%.2f", float64(ok)/float64(testSize)*100.0)
 	fmt.Println(" %")
+	//saving weights to text file
+	plainText := ""
+	for i := 0; i < inputs+1; i++ {
+		for j := 0; j < hiddens; j++ {
+			plainText += strconv.FormatFloat(hidWeights[i][j], 'f', -1, 64)
+			plainText += ","
+		}
+		plainText += "\n"
+	}
+	for i := 0; i < hiddens+1; i++ {
+		for j := 0; j < outputs; j++ {
+			plainText += strconv.FormatFloat(outWeights[i][j], 'f', -1, 64)
+			if !((i == hiddens) && (j == (outputs - 1))) {
+				plainText += ","
+			}
+		}
+		if i != hiddens {
+			plainText += "\n"
+		}
+	}
+	netFile, err := os.Create(weightsFileName)
+	check(err)
+	_, err = netFile.WriteString(plainText)
+	netFile.Close()
 	//saving weights to JSON file
 	var jsonStruct JSONstruct
 	jsonStruct.Layers = make([]Layer, 3)
